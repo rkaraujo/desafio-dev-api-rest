@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  account-manager-network:
+    driver: bridge
+
+services:
+  account-manager:
+    image: account-manager
+    container_name: account-manager
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    networks:
+      - account-manager-network
+    command: java -Dapp.db.host=renato-postgres -jar /opt/app/account-manager-1.0.0-SNAPSHOT.jar
+
+  postgresql:
+    image: postgres:12.3-alpine
+    container_name: renato-postgres
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./docker-util/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    restart: always
+    networks:
+      - account-manager-network

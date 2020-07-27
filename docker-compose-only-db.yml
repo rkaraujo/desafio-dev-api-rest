@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres:12.3-alpine
+    container_name: renato-postgres
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./docker-util/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    restart: always

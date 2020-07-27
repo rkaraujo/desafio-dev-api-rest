@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "fe7bf4a5-e106-4842-9128-5cbcf6d50849",
+		"name": "Account Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cria conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPessoa\": 1,\r\n    \"limiteSaqueDiario\": 1000.00,\r\n    \"flagAtivo\": true,\r\n    \"tipoConta\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Depositar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idConta\": 1,\r\n    \"valor\": 1000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transacoes/depositar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transacoes",
+						"depositar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contas/1/saldo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contas",
+						"1",
+						"saldo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sacar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idConta\": 1,\r\n    \"valor\": 100.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transacoes/sacar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transacoes",
+						"sacar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bloquear conta",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contas/1/bloquear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contas",
+						"1",
+						"bloquear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desbloquear conta",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contas/1/desbloquear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contas",
+						"1",
+						"desbloquear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extrato",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contas/1/extrato?inicio=01072020&fim=31072020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contas",
+						"1",
+						"extrato"
+					],
+					"query": [
+						{
+							"key": "inicio",
+							"value": "01072020"
+						},
+						{
+							"key": "fim",
+							"value": "31072020"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
